@@ -1,0 +1,32 @@
+{% extends "layout.html"%}
+
+{% block content %}
+<h1><a href="/">Home </a> <i class="angle double right icon"></i><a href="/crypto">Crypto </a> <i class="angle double right icon"></i>{{ crypto.name }}</h1>
+
+<h2>Prices</h2>
+
+<table class="ui selectable striped celled table">
+    <thead>
+        <tr>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Market Cap</th>
+        <th>Supply</th>
+        <th>Rank</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for price in prices %}
+    <tr>
+        <td> {{price.date}}</td>
+        <td> {{price.price}}</td>
+        <td> {{price.market_cap}}</td>
+        <td> {{price.supply}}</td>
+        <td> {{price.rank}}</td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+    
+{% endblock %}

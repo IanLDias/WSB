@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Crypto</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    </head>
+    <body> 
+        <div class= "ui container">
+            <h1><a href="/">Home </a> <i class="angle double right icon"></i> Crypto List</h1>
+
+            <table class="ui selectable striped celled table">
+                <thead>
+                    <tr>
+                    <th>id</th>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for crypto in all_crypto %}
+                    <tr>
+                        <td>{{ crypto.id }}</td>
+                        <td>{{ crypto.symbol }}</td>
+                        <td><a href="/crypto/{{ crypto.symbol }}">{{ crypto.name}}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+        </div>
+
+    </body>
+</html>
