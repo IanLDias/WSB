@@ -1,8 +1,12 @@
 import sqlite3 
-import requests, config
+from database import config
+import requests
 
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
+import mplfinance as mpl
+from visualization import mpl_crypto
+from visualization import plot_crypto
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -79,5 +83,8 @@ def crypto_detail(request: Request, symbol):
     GROUP BY crypto_id
     """)
     prices = cursor.fetchall()
+    #graph = mpl_crypto(symbol)
+    graph = plot_crypto(symbol)
 
-    return templates.TemplateResponse("individual_crypto.html", {"request": request, "crypto": row, "prices":prices})
+    return templates.TemplateResponse("individual_crypto.html", {"request": request, 
+    "crypto": row, "prices":prices, "graph":graph})
